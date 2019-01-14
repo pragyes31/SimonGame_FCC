@@ -66,3 +66,8 @@ h1 {
 .restart:active {
   border: 5px solid salmon;
 }
+
+.testing {
+  color: #fff;
+  background: none;
+}
