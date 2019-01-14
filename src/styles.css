@@ -25,7 +25,7 @@ h1 {
 }
 
 .color,
-.restart {
+.play {
   height: 75px;
   width: 75px;
   border-radius: 50%;
@@ -51,7 +51,7 @@ h1 {
   border: 3px solid #33cc33;
 }
 
-.restart {
+.play {
   border: 3px solid lightgoldenrodyellow;
   margin: 10px;
 }
@@ -63,7 +63,7 @@ h1 {
   border: 7px solid lightgoldenrodyellow;
 }
 
-.restart:active {
+.play:active {
   border: 5px solid salmon;
 }
 
