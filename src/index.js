@@ -21,18 +21,19 @@ function createSimonGame() {
       let currentColor = colorBtns[pickRandomColor].innerHTML;
       botPattern.push(currentColor);
       simonGameApp.playAudio(currentColor);
-      // colorAudio[currentColor].play();
+      console.log(botPattern);
     },
     checkUsersMove: e => {
-      userPattern.push(e.target.innerHTML);
-      let botPatternToTest = botPattern.slice(0, userPattern.length + 1);
-      for (let i = 0; i < userPattern.length; i++) {
-        if (botPatternToTest !== userPattern) {
-          //alert('wrong pattern bruv!! Let me restart the game for you!!!')
-        } else {
-          //do something else
+      if (botPattern.length >= userPattern.length) {
+        userPattern.push(e.target.innerHTML);
+        let botPatternToTest = botPattern.slice(0, userPattern.length + 1);
+        for (let i = 0; i < userPattern.length; i++) {
+          if (botPatternToTest[i] !== userPattern[i]) {
+            alert("wrong pattern bruv!! Let me restart the game for you!!!");
+          }
         }
       }
+      simonGameApp.generateColorSequence;
     },
     playAudio: color => {
       switch (color) {
