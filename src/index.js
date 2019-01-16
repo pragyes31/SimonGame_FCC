@@ -13,27 +13,33 @@ function createSimonGame() {
     "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
   );
   let botPattern = [];
+  let botPatternToTest = [];
   let userPattern = [];
-  let sequenceCount = 1;
+  let usercount = 0;
   const simonGameApp = {
     generateColorSequence: () => {
+      botPattern.forEach(color => simonGameApp.playBotSequence(color));
       let pickRandomColor = Math.floor(Math.random() * colorBtns.length);
       let currentColor = colorBtns[pickRandomColor].innerHTML;
       botPattern.push(currentColor);
       simonGameApp.playAudio(currentColor);
       console.log(botPattern);
     },
+    playBotSequence: color => {
+      simonGameApp.playAudio(color);
+      // add animation to button
+    },
     checkUsersMove: e => {
-      if (botPattern.length >= userPattern.length) {
-        userPattern.push(e.target.innerHTML);
-        let botPatternToTest = botPattern.slice(0, userPattern.length + 1);
-        for (let i = 0; i < userPattern.length; i++) {
-          if (botPatternToTest[i] !== userPattern[i]) {
-            alert("wrong pattern bruv!! Let me restart the game for you!!!");
-          }
-        }
+      let usersMove = e.target.innerHTML;
+      userPattern.push(usersMove);
+      botPatternToTest = botPattern.slice(0, userPattern.length + 1);
+      if (botPatternToTest[counter] !== userPattern[counter]) {
+        alert("wrong pattern bruv!! Let me restart the game for you!!!");
+        usercount++;
       }
-      simonGameApp.generateColorSequence;
+      if (botPattern.length >= userPattern.length) {
+        simonGameApp.generateColorSequence;
+      }
     },
     playAudio: color => {
       switch (color) {
