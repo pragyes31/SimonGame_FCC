@@ -18,16 +18,26 @@ function createSimonGame() {
   let usercount = 0;
   const simonGameApp = {
     generateColorSequence: () => {
-      botPattern.forEach(color => simonGameApp.playBotSequence(color));
+      simonGameApp.disableBtns;
       let pickRandomColor = Math.floor(Math.random() * colorBtns.length);
       let currentColor = colorBtns[pickRandomColor].innerHTML;
+      botPattern.forEach(color => simonGameApp.handleColorAnimation(color));
       botPattern.push(currentColor);
-      simonGameApp.playAudio(currentColor);
+      simonGameApp.handleColorAnimation(currentColor);
       console.log(botPattern);
+      simonGameApp.enableBtns;
     },
-    playBotSequence: color => {
+    handleColorAnimation: color => {
       simonGameApp.playAudio(color);
       // add animation to button
+    },
+    disableBtns: () => {
+      colorBtns.forEach(btn => (btn.disabled = true));
+      playBtn.forEach(btn => (btn.disabled = true));
+    },
+    enableBtns: () => {
+      colorBtns.forEach(btn => (btn.disabled = false));
+      playBtn.forEach(btn => (btn.disabled = false));
     },
     checkUsersMove: e => {
       let usersMove = e.target.innerHTML;
