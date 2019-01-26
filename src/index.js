@@ -18,17 +18,21 @@ function createSimonGame() {
   let usercount = 0;
   const simonGameApp = {
     generateColorSequence: () => {
+      playBtn.disabled = true;
       simonGameApp.disableBtns;
       let pickRandomColor = Math.floor(Math.random() * colorBtns.length);
       let currentColor = colorBtns[pickRandomColor].innerHTML;
+      console.log(currentColor);
       botPattern.forEach(color => simonGameApp.handleColorAnimation(color));
       botPattern.push(currentColor);
-      simonGameApp.handleColorAnimation(currentColor);
       console.log(botPattern);
+      simonGameApp.handleColorAnimation(currentColor);
       simonGameApp.enableBtns;
     },
     handleColorAnimation: color => {
+      console.log("handleColorAnimation", color);
       simonGameApp.playAudio(color);
+
       // add animation to button
     },
     disableBtns: () => {
@@ -42,33 +46,36 @@ function createSimonGame() {
     checkUsersMove: e => {
       let usersMove = e.target.innerHTML;
       userPattern.push(usersMove);
-      botPatternToTest = botPattern.slice(0, userPattern.length + 1);
-      if (botPatternToTest[counter] !== userPattern[counter]) {
-        alert("wrong pattern bruv!! Let me restart the game for you!!!");
+      botPatternToTest = botPattern.slice(0, userPattern.length);
+      if (botPatternToTest[usercount] === userPattern[usercount]) {
+        alert("correct pattern, hit next button");
         usercount++;
       }
-      if (botPattern.length >= userPattern.length) {
-        simonGameApp.generateColorSequence;
+      console.log(botPattern.length, userPattern.length);
+      if (botPattern.length === userPattern.length) {
+        simonGameApp.generateColorSequence();
       }
     },
     playAudio: color => {
       switch (color) {
-        case "red":
+        case "Red":
           red.play();
           break;
-        case "blue":
+        case "Blue":
           blue.play();
           break;
-        case "yellow":
+        case "Yellow":
           yellow.play();
           break;
-        case "green":
+        case "Green":
           green.play();
           break;
+        default:
+          console.log("doesnt belong anywhere else");
       }
     }
   };
-  testBtn.addEventListener("click", simonGameApp.generateColorSequence);
+  playBtn.addEventListener("click", simonGameApp.generateColorSequence);
   colorBtns.forEach(e =>
     e.addEventListener("click", simonGameApp.checkUsersMove)
   );

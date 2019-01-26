@@ -35,19 +35,19 @@ h1 {
   font-size: 15px;
 }
 
-.blue {
+.Blue {
   border: 3px solid #0000e6;
 }
 
-.red {
+.Red {
   border: 3px solid #cc2900;
 }
 
-.yellow {
+.Yellow {
   border: 3px solid #ffff1a;
 }
 
-.green {
+.Green {
   border: 3px solid #33cc33;
 }
 
@@ -56,10 +56,10 @@ h1 {
   margin: 10px;
 }
 
-.green:active,
-.red:active,
-.yellow:active,
-.blue:active {
+.Green:active,
+.Red:active,
+.Yellow:active,
+.Blue:active {
   border: 7px solid lightgoldenrodyellow;
 }
 
