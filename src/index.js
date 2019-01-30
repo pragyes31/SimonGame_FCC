@@ -35,14 +35,15 @@ function createSimonGame() {
 
       // add animation to button
     },
-    disableBtns: () => {
-      colorBtns.forEach(btn => (btn.disabled = true));
-      playBtn.forEach(btn => (btn.disabled = true));
-    },
     enableBtns: () => {
       colorBtns.forEach(btn => (btn.disabled = false));
       playBtn.forEach(btn => (btn.disabled = false));
     },
+    disableBtns: () => {
+      colorBtns.forEach(btn => (btn.disabled = true));
+      playBtn.forEach(btn => (btn.disabled = true));
+    },
+
     checkUsersMove: e => {
       let usersMove = e.target.innerHTML;
       userPattern.push(usersMove);
