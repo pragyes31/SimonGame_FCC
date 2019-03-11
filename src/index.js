@@ -65,7 +65,7 @@ function createSimonGame() {
           green.play();
           break;
         default:
-          console.log("doesnt belong anywhere else");
+          console.log("doesnt belong anywhere");
       }
     }
   };
