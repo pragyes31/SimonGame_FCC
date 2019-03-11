@@ -23,36 +23,29 @@ function createSimonGame() {
       let pickRandomColor = Math.floor(Math.random() * colorBtns.length);
       let currentColor = colorBtns[pickRandomColor].innerHTML;
       console.log(currentColor);
-      botPattern.forEach(color => simonGameApp.handleColorAnimation(color));
       botPattern.push(currentColor);
-      console.log(botPattern);
-      simonGameApp.handleColorAnimation(currentColor);
+      // line 28 will play the entire pattern that user has to repeat
+      botPattern.forEach(color => simonGameApp.handleColorAnimation(color));
       simonGameApp.enableBtns;
     },
     handleColorAnimation: color => {
-      console.log("handleColorAnimation", color);
       simonGameApp.playAudio(color);
-
-      // add animation to button
     },
     enableBtns: () => {
       colorBtns.forEach(btn => (btn.disabled = false));
-      playBtn.forEach(btn => (btn.disabled = false));
     },
     disableBtns: () => {
       colorBtns.forEach(btn => (btn.disabled = true));
-      playBtn.forEach(btn => (btn.disabled = true));
     },
 
     checkUsersMove: e => {
       let usersMove = e.target.innerHTML;
       userPattern.push(usersMove);
-      botPatternToTest = botPattern.slice(0, userPattern.length);
-      if (botPatternToTest[usercount] === userPattern[usercount]) {
+      //botPatternToTest = botPattern.slice(0, userPattern.length);
+      if (botPattern[usercount] === userPattern[usercount]) {
         alert("correct pattern, hit next button");
         usercount++;
       }
-      console.log(botPattern.length, userPattern.length);
       if (botPattern.length === userPattern.length) {
         simonGameApp.generateColorSequence();
       }

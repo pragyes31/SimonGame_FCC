@@ -1,0 +1,12 @@
+1. Click the play button
+2. Clicking the play button will disable it for as long the game is in progress. 
+   There is no need for play button anymore
+3. After the play button is clicked, the bot will randomly select a color
+   and will push it in a varibale "botPattern".
+4. After the newly picked color is pushed, the botPattern array will animate
+   over the array to let the user know of the patter that he/she has to repeat.
+5. As long as the bot is animating the colors, the color buttons will be 
+   disabled so that the user do not start clicking the colors.
+6. Once bot has animated the entire pattern, the color buttons will be enable 
+  for user to input.
+7. 
