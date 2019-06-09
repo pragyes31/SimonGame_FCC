@@ -22,8 +22,8 @@ function buildSimonGame() {
       green,
       blue
     },
-    userPattern: [],
     botPattern: [],
+    userPattern: [],
     gameLevel: 0
   };
   const simonGameApp = {
@@ -35,9 +35,10 @@ function buildSimonGame() {
     },
     startGame: () => {
       simonGameApp.enableBtns(soundBtns);
-      playBtn.disabled = true;
+      //playBtn.disabled = true;
       let pickRandomColor = Math.floor(Math.random() * soundBtns.length);
       let currentColor = soundBtns[pickRandomColor].innerHTML;
+      gameParams.botPattern.push(currentColor);
     }
   };
   simonGameApp.disableBtns(soundBtns);
