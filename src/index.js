@@ -3,7 +3,6 @@ import "./styles.css";
 function buildSimonGame() {
   const soundBtns = Array.from(document.querySelectorAll(".color"));
   const playBtn = document.querySelector(".play");
-  const testBtn = document.querySelector(".testing");
   const red = new Audio(
     "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
   );
