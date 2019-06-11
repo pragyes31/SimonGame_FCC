@@ -16,12 +16,6 @@ function buildSimonGame() {
     "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
   );
   let gameParams = {
-    sounds: {
-      red,
-      yellow,
-      green,
-      blue
-    },
     botPattern: [],
     userPattern: [],
     gameLevel: 0
@@ -39,6 +33,39 @@ function buildSimonGame() {
       let pickRandomColor = Math.floor(Math.random() * soundBtns.length);
       let currentColor = soundBtns[pickRandomColor].innerHTML;
       gameParams.botPattern.push(currentColor);
+      console.log(gameParams.botPattern);
+      gameParams.botPattern.forEach(color => {
+        let showMoves = setInterval(() => {
+          if (
+            gameParams.botPattern.indexOf(color) >=
+            gameParams.botPattern.length - 1
+          ) {
+            clearInterval(showMoves);
+          }
+          simonGameApp.playAudio(color);
+          //gameParams.sounds.color.play();
+        }, 1000);
+      });
+    },
+    playAudio: color => {
+      setTimeout(() => {
+        switch (color) {
+          case "Red":
+            red.play();
+            break;
+          case "Blue":
+            blue.play();
+            break;
+          case "Yellow":
+            yellow.play();
+            break;
+          case "Green":
+            green.play();
+            break;
+          default:
+            console.log("doesnt belong anywhere");
+        }
+      }, 2000);
     }
   };
   simonGameApp.disableBtns(soundBtns);
